@@ -46,13 +46,7 @@ function crazyDiff(num) {
 */
 /* SCRIVI QUI LA TUA RISPOSTA */
 function boundary(n) {
-  if (n >= 20 && n <= 100) {
-    return true;
-  } else if (n === 400) {
-    return true;
-  } else {
-    return false;
-  }
+  return (n >= 20 && n <= 100) || n === 400;
 }
 /* ESERCIZIO 5
  Scrivi una funzione di nome "epify" che accetta una stringa come parametro.
@@ -61,7 +55,15 @@ function boundary(n) {
 */
 /* SCRIVI QUI LA TUA RISPOSTA */
 function epify(phrase) {
-  const s = phrase.split(" ");
+  const containsEpicode = phrase.toUpperCase().startWith("EPICODE");
+
+  if (containsEpicode) {
+    return phrase;
+  } else {
+    return "EPICODE" + phrase;
+  }
+}
+/*const s = phrase.split(" ");
 
   if (s[0] === "EPICODE") {
     return phrase;
@@ -88,7 +90,15 @@ function check3and7(n3) {
  Scrivi una funzione di nome "reverseString", il cui scopo è invertire una stringa fornita come parametro (es. "EPICODE" --> "EDOCIPE")
 */
 /* SCRIVI QUI LA TUA RISPOSTA */
-function reverseString(ss) {
+function reverseString(str) {
+  const ArrayOfChar = str.split("");
+  const arrOfCharReversed = ArrayOfChar.reverse();
+
+  const arrToStr = arrOfCharReversed.join("");
+  return arrToStr;
+}
+//return str.split("").reverse().join("");
+/*function reverseString(ss) {
   const max = ss.length - 1;
   const tempstring = ss.split("");
   const tempstring2 = ss.split("");
@@ -104,7 +114,22 @@ function reverseString(ss) {
  La funzione deve rendere maiuscola la prima lettera di ogni parola contenuta nella stringa.
 */
 /* SCRIVI QUI LA TUA RISPOSTA */
-function upperFirst(s3) {
+function upperFirst(str) {
+  const words = str.split(" ");
+  const arrOfNewWords = [];
+
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    const firstChar = word.charAt(0);
+    const firstCharUpper = firstChar.toUpperCase();
+    const remainingLetters = word.slice(1);
+    const wordCapitalized = firstCharUpper + remainingLetters;
+    arrOfNewWords.push(wordCapitalized);
+  }
+  return arrOfNewWords.join(" ");
+}
+console.log(upperFirst("Oggi è una bellissima giornata "));
+/*function upperFirst(s3) {
   let max = s3.length;
   const s4 = s3.split(" ");
   const s5 = [""];
